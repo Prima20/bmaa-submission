@@ -1,4 +1,4 @@
-package com.raion.prima.mypokedex.view
+package com.raion.prima.mypokedex.about
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
