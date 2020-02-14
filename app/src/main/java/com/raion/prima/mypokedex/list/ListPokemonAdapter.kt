@@ -31,12 +31,15 @@ class ListPokemonAdapter(private val listPokemon: ArrayList<Pokemon>) : Recycler
 
         Glide.with(holder.itemView.context)
             .load(pokemon.sprite)
-            .apply(RequestOptions().override(55,55))
+            .apply(RequestOptions().override(180,180))
             .into(holder.ImgPokemon)
 
         holder.tvPokemonName.text = pokemon.name
+        holder.tvPokemonType.text = "| "
         pokemon.type.forEach {
-            holder.tvPokemonType.text = it
+            var type = holder.tvPokemonType.text as String
+            type += it + " | "
+            holder.tvPokemonType.text = type
         }
 
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(listPokemon[holder.adapterPosition]) }

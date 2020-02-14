@@ -26,8 +26,11 @@ class PokemonDetail : AppCompatActivity() {
             .load(data.sprite)
             .into(img_detail_pokemon)
 
+        tv_detail_type.text = "| "
         data.type.forEach {
-            tv_detail_type.text = it
+            var type = tv_detail_type.text as String
+            type += it + " | "
+            tv_detail_type.text = type
         }
         tv_detail_desc.text = data.description
     }
