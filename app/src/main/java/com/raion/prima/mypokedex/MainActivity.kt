@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.raion.prima.mypokedex.about.AboutActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.raion.prima.mypokedex.list.ListPokemonAdapter
 import com.raion.prima.mypokedex.model.Pokemon
 import com.raion.prima.mypokedex.model.PokemonData
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.raion.prima.mypokedex.detail.PokemonDetail
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,5 +54,13 @@ class MainActivity : AppCompatActivity() {
         rvPokemon.layoutManager = LinearLayoutManager(this)
         val listPokemonAdapter = ListPokemonAdapter(list)
         rvPokemon.adapter = listPokemonAdapter
+
+        listPokemonAdapter.setOnItemClickCallback(object : ListPokemonAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Pokemon) {
+                val intent = Intent(applicationContext, PokemonDetail::class.java)
+                intent.putExtra("pokeData", data)
+                startActivity(intent)
+            }
+        })
     }
 }

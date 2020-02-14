@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".about.AboutActivity"
             android:parentActivityName=".MainActivity"/>
+        <activity android:name=".detail.PokemonDetail"
+            android:parentActivityName=".MainActivity"/>
     </application>
 
 </manifest>
